@@ -1,11 +1,11 @@
 class Wall {
 	/**
-	* Position de la premiere moitié du mur
+	* Position de la première moitié du mur
 	*/
 	private Boolean active = false;
 
 	/**
-    * Construit un mur a partir d'une position (obejct Location)
+    * Construit un mur a partir d'une position (objet Location)
     * @return true
     *			si ce mur est actif
     * @return true
