@@ -10,9 +10,9 @@ public class Player {
     private static final int TOTAL_WALLS = 20;
 
     /**
-     * La position Location du pion
+     * La position Location du joueur
      */
-    private Location pawnLocation;
+    private Location playerLocation;
 
     /**
      * Nombre de murs qu'il reste au joueur
@@ -20,29 +20,34 @@ public class Player {
     private int numWalls;
 
     /**
-     * La positon initilae en haut
+     * La positon initiale en haut
      */
-    private static final Location TOP = new Location(0, 4);
+    private static final Location TOP = new Location(0, 5);
 
      /**
      * la position initiale en bas
      */
-    private static final Location BOT = new Location(8, 4);
+    private static final Location BOT = new Location(9, 5);
 
     /**
      * la position initiale à gauche
      */
-    private static final Location LEFT = new Location(4, 0);
+    private static final Location LEFT = new Location(5, 0);
 
     /**
      * la position initiale à droites
      */
-    private static final Location RIGHT = new Location(4, 8);
+    private static final Location RIGHT = new Location(5, 9);
 
     /**
      * Nombre de joueurs
      */
     private int numPlayers;
+
+    /**
+     * Tableau contenant toutes les les cases qu'un joueur peut atteindre à partir de la position où il se trouve
+     */
+    private Location[] availableLocations;
 
      /**
      * tableau des joueurs
@@ -51,30 +56,28 @@ public class Player {
 
 
     /**
-     * Position initial en fontion du numero du jouer
+     * Position initial en fonction du numéro du jouer
      */
     private static final Location[] INITIAL_LOCATIONS = { TOP, BOT, RIGHT, LEFT };
 
 
     /**
-     * Construit un Pawn a partir du nombre de joueurs et du numero du joueur
+     * Construit un Player a partir du nombre de joueurs et du numéro du joueur
      * 
      * @param numPlayers
      *           nombre de joueurs
      * @param index
-     *            numero du joueur
+     *            numéro du joueur
      */
-    public winCondition(Location location){}
-
     public Player(int numPlayers, int index) {
         this.playerId = index;
-    	this.setPawnLoc(INITIAL_LOCATIONS[index]);
+    	this.setplayerLoc(INITIAL_LOCATIONS[index]);
         this.setNumWalls(TOTAL_WALLS / numPlayers);
     	
     }
 
     /**
-     * Obternir le nombre de murs qu'il reste au joueur
+     * Obtenir le nombre de murs qu'il reste au joueur
      * @return le nombre de murs qu'il reste au joueur
      */
     public int getNumWalls() {
@@ -82,7 +85,7 @@ public class Player {
     }
 
     /**
-     * Définir le nombre de murs qu'il reste au joeur
+     * Définir le nombre de murs qu'il reste au joueur
      * 
      * @param numWalls
      *            le nombre de murs qu'on veut donner au joueur
@@ -92,53 +95,88 @@ public class Player {
     }
 
     /**
-     * Obternir la ligne ou colonne gagante de ce joueur.
-     * @return la ligne ou colonne gagante de ce joueur
+     * Obtenir la position (Location) du joueur qui appartient a ce jouer.
+     * 
+     * @return L’objet Location (position) du joueur de ce jouer
      */
-    public int getTargetEdge() {
-	   return targetEdge;
+    public Location getplayerLoc() {
+	   return playerLocation;
     }
 
     /**
-     * Obtenir la position (Location) du pion qui appartient a ce joeur.
+     * Définir la position du joueur de ce joueur
      * 
-     * @return L'object Location (postion) du pion de ce joeur
-     */
-    public Location getPawnLoc() {
-	   return pawnLocation;
-    }
-
-    /**
-     * Definir la position du pion de ce joeur
-     * 
-     * @param pawnLoc
+     * @param playerLoc
      *            La nouvelle position (Location )
      */
-    public void setPawnLoc(Location pawnLoc) {
-	   this.pawnLocation = pawnLoc;
+    public void setplayerLoc(Location playerLoc) {
+	   this.playerLocation = playerLoc;
     }
 
 
+    /**
+     *
+     *
+     *
+     */
+    private void setAvailableLocations(){
+        for (int i = this.playerLocation.getRow()-2; i < this.playerLocation.getRow()+3; i++) {
+            for (int j = this.playerLocation.getCol()-2; j <this.playerLocation.getCol()+3; j++) {
+                
+            }
+        }
+    }
+
 
     /**
-    * 
-    *
-    *
-    */
+     * Permet de savoir si ce joueur a gagné 
+     *
+     * @return true 
+     *            si le joueur est le gagnant
+     * @return false 
+     *            sinon
+     *
+     */
     public boolean isWinner(){
         switch (INITIAL_LOCATIONS[this.playerId]) {
             case BOT:
-                return this.pawnLocation.rowEquals(TOP);
+                return this.playerLocation.rowEquals(TOP);
                 break;
             case TOP:
-                return this.pawnLocation.rowEquals(BOT);
+                return this.playerLocation.rowEquals(BOT);
                 break;
             case LEFT:
-                return this.pawnLocation.colEquals(RIGHT);
+                return this.playerLocation.colEquals(RIGHT);
                 break;
             case RIGHT:
-                return this.pawnLocation.colEquals(LEFT);
+                return this.playerLocation.colEquals(LEFT);
                 break;   
+        }
+    }
+
+    /**
+    * Permet de connaître les case où ce joueur peut aller.
+    *
+    * @return un tableau d’objets Position dans les-quelles ce joueur peut se rendre. 
+    */
+    public boolean canMoveTo(Location loc) {
+        return Arrays.asList(this.availableLocations).contains(loc);
+    }
+
+   /**
+     * Déplacer le joueur vers une une nouvelle position si possible
+     * 
+     * @param loc
+     *            La position dans laquelle le joueur doit être déplacé
+     */
+    public void movePwanTo(Location loc){
+        if this.canMoveTo(loc){
+            if (loc.getRow() != 0)
+                loc.setRow(loc.getRow()+1);
+            if (loc.getCol() != 0)
+                loc.setCol(loc.getCol()+1);
+            this.playerLocation = new Location(loc.getRow(),loc.getCol);
+            this.setAvailableLocations();
         }
     }
 
