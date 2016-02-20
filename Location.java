@@ -8,12 +8,12 @@ public class Location{
 
 
     /**
-     * Construit un object Location a partir du numero de la colonne et de la ligne
+     * Construit un objet Location a partir du numéro de la colonne et de la ligne
      * 
      * @param row
-     *           numero de la ligne
+     *           numéro de la ligne
      * @param col
-     *           numero de la colonne
+     *           numéro de la colonne
      */
     public Location(int row, int col) {
 		this.row = row;
@@ -21,7 +21,7 @@ public class Location{
     }
 
     /**
-     * Obternir la ligne 
+     * Obtenir la ligne 
      * @return la ligne 
      */
     public int getRow() {
@@ -32,14 +32,14 @@ public class Location{
      * Définir la ligne
      * 
      * @param row
-     *            numero de la ligne
+     *            numéro de la ligne
      */
     public void setRow(int row) {
 		this.row = row;
     }
 
      /**
-     * Obternir la colonne 
+     * Obtenir la colonne 
      * @return la colonne 
      */
     public int getCol() {
@@ -47,10 +47,10 @@ public class Location{
     }
 
     /**
-     * Définir la colonce
+     * Définir la colonne
      * 
      * @param col
-     *            numero de la colonne
+     *            numéro de la colonne
      */
     public void setCol(int col) {
 		this.col = col;
@@ -58,14 +58,14 @@ public class Location{
 
 
     public String toString() {
-		return "Ligne: " + getRow() + ", Collone: " + getCol();
+		return "Ligne: " + getRow() + ", Colonne: " + getCol();
     }
 
     /**
      * Vérifie si deux positions sont égales
      * 
      * @param obj
-     *            object de type Location qu'on veut comparer
+     *            objet de type Location qu'on veut comparer
      * @return true 
      *            si les deux positions sont les mêmes
      * @return false 
@@ -75,9 +75,11 @@ public class Location{
 		return loc.getRow() == getRow() && loc.getCol() == getCol();
     }
 
+
     public boolean rowEquals(Location loc){
         return loc.row() == this.row();
     }
+
 
     public boolean colEquals(Location loc){
         return loc.col() == this.col();
