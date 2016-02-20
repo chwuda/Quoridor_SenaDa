@@ -1,7 +1,7 @@
 class Board {
 
 	/**
-	* Nombre total de cases qui conposent le tablau. (murs compris)
+	* Nombre total de cases qui composent le tableau. (murs compris)
 	*/
 	private int width;
 
@@ -23,6 +23,15 @@ class Board {
 
 		this.width = 2*numRows -1;
 		this.boardArray = new Objet[this.width][this.width];
+	}
+
+	
+	public Objet[][] getBoardArray{
+		return this.boardArray;
+	}
+
+	public void putWall(Location loc, String direction){
+		
 	}
 
 
