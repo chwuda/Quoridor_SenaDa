@@ -1,7 +1,5 @@
 class Wall {
-	/**
-	* 
-	*/
+
 	private Boolean active = false;
 
 	public boolean isActive() {

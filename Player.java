@@ -162,37 +162,7 @@ public class Player {
         }
     }
 
-    public List<Location> managePlayersCommit(String side){
-        int row = this.playerLocation.getRow();
-        int col = this.playerLocation.getCol();
-        switch (side) {
-            case "up" :
-                row = row -2;
-                break;
-            case "right" :
-
-                break;
-            case "down" :
-
-                break;
-            case "left" :
-
-                break;
-        }
-        //ERREUR CAR BOARD N EXISTE PAS ENCORE. ON VERA QUAND ON AURA DECIDE DE L ORGANISATION
-        if (Board.getObjectOnTile(new Location(row-2,col)) instanceOf Player) {
-            if(Board.getObjectOnTile(new Location(row-3,col)).isActive()){
-                if (col < 16 && !(Board.getObjectOnTile(new Location(row-2,col+1)).isActive())) 
-                    access.add(new Location(row-2,col+2)); //case à droite + REMPLACER 16 PAR UNE VALEUR VARIABLE
-                if (col > 0 && !(Board.getObjectOnTile(new Location(row-2,col-1)).isActive())) 
-                    access.add(new Location(row-2,col-2)); //case à gauche
-            }else
-                access.add(new Location(row-3,col)));
-        }else
-            acces.add(loc);
-    }
-
-
+  
     public Map<String, Location> getAvailableNeighbours(){
         int col = this.playerLocation.getCol();
         int row = this.playerLocation.getRow();
