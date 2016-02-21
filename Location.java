@@ -85,4 +85,31 @@ public class Location{
         return loc.col() == this.col();
     }
 
+    // public Location above(){
+    //     if(this.row > 0) 
+    //          return new Location(this.row +1, this.col);
+    //     else
+    //          return this;
+    // }
+
+    // public Location below(){
+    //     if(this.row < 16) 
+    //          return new Location(this.row -1, this.col);
+    //     else
+    //          return this;
+    // }
+
+    // public Location toTheLeft(){
+    //     if(this.col > 0) 
+    //          return new Location(this.row, this.col+1);
+    //     else
+    //          return this;
+    // }
+
+    // public Location toTheRight(){
+    //     if(this.col < 16) 
+    //          return new Location(this.row, this.col-1);
+    //     else
+    //          return this;
+    // }
 }
