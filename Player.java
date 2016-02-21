@@ -137,6 +137,7 @@ public class Player {
             int col = loc.getCol();
             switch (key) {
                 case "up" :
+
                     //ERREUR CAR BOARD N EXISTE PAS ENCORE. ON VERA QUAND ON AURA DECIDE DE L ORGANISATION
                     if (Board.getObjectOnTile(new Location(row-2,col)) instanceOf Player) {
                         if(Board.getObjectOnTile(new Location(row-3,col)).isActive()){
@@ -169,17 +170,17 @@ public class Player {
 
         Map<String, Location> neighbours = new HashMap<String, Location>(); 
 
-        //ICI PROBLEME CAR BOARD N EXISTE PAS ENCORE. ON VERA QUAND ON AURA DECIDE D UNE ORGANISATION
-        if (row > 0 && !(Board.getObjectOnTile(new Location(row-1,col)).isActive())) 
+        
+        if (!this.isTopWallActive()) 
             neighbours.put("up", new Location(row-2,col)); // case au dessus
 
-        if (col < 16 && !(Board.getObjectOnTile(new Location(row,col+1)).isActive())) 
+        if (!this.isRightWallActive()) 
             neighbours.put("right", new Location(row,col+2)); //case à droite + REMPLACER 16 PAR UNE VALEUR VARIABLE
 
-        if (row < 16 && !(Board.getObjectOnTile(new Location(row+1,col)).isActive())) 
+        if (!this.isBotWallActive()) 
             neighbours.put("down", new Location(row+2,col));  //case en dessous + REMPLACER 16 PAR UNE VALEUR VARIABLE
 
-        if (col > 0 && !(Board.getObjectOnTile(new Location(row,col-1)).isActive())) 
+        if (!this.isLeftWallActive()) 
             neighbours.put("left", new Location(row,col-2)); //case à gauche
         
         return neighbours;
@@ -242,6 +243,55 @@ public class Player {
         return false;
     }
 
+
+    //ICI PROBLEME CAR BOARD N EXISTE PAS ENCORE. ON VERA QUAND ON AURA DECIDE D UNE ORGANISATION
+    public boolean isLeftWallActive(){
+        int col = this.playerLocation.getCol();
+        int row = this.playerLocation.getRow();
+
+        if(col = 0) 
+            return true;
+        if(col > 0)
+            return Board.getObjectOnTile(new Location(row,col-1)).isActive();
+
+        return false;
+    }
+
+    public boolean isRightWallActive(){
+        int col = this.playerLocation.getCol();
+        int row = this.playerLocation.getRow();
+
+        if(col = 16) 
+            return true;
+        if(col < 16)
+            return Board.getObjectOnTile(new Location(row,col+1)).isActive();
+        
+        return false;
+    }
+
+    public boolean isTopWallActive(){
+        int col = this.playerLocation.getCol();
+        int row = this.playerLocation.getRow();
+
+        if(row = 0) 
+            return true;
+        if(row > 0)
+            return Board.getObjectOnTile(new Location(row-1,col)).isActive();
+        
+        return false;
+    }
+
+    public boolean isBotWallActive(){
+        int col = this.playerLocation.getCol();
+        int row = this.playerLocation.getRow();
+
+        if(row = 16) 
+            return true;
+        if(row < 16)
+            return Board.getObjectOnTile(new Location(row+1,col)).isActive();
+        
+        return false;
+    }
 
 
 }
