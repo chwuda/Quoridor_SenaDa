@@ -71,7 +71,7 @@ public class Player {
      */
     public Player(int numPlayers, int index) {
         this.playerId = index;
-        this.setplayerLoc(INITIAL_LOCATIONS[index]);
+    	this.setplayerLoc(INITIAL_LOCATIONS[index]);
         this.setNumWalls(TOTAL_WALLS / numPlayers);
         
     }
@@ -101,6 +101,7 @@ public class Player {
      */
     public Location getplayerLoc() {
        return playerLocation;
+
     }
 
     /**
@@ -110,7 +111,9 @@ public class Player {
      *            La nouvelle position (Location )
      */
     public void setplayerLoc(Location playerLoc) {
-       this.playerLocation = playerLoc;
+
+	   this.playerLocation = playerLoc;
+
     }
 
 

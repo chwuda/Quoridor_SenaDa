@@ -24,6 +24,35 @@ class Board {
 		this.boardArray = new Objet[this.width][this.width];
 	}
 
+	public Object getObjectOnTile(Location loc){
+		return this.boardArray[loc.getRow()][loc.getCol()];
+	}
+
+	public boolean putWall(Location loc, boolean isHorizontal){
+		int row = col.getRow();
+		int col = col.getCol();
+		if (isHorizontal) {
+			if (this.getObjectOnTile(loc).isInactive() && this.getObjectOnTile(new Location(row,col+2)).isInactive()) {
+				this.getObjectOnTile(loc).setActive();
+				this.getObjectOnTile(new Location(row,col+2)).setActive();
+
+				return true;
+			}
+		}else{
+			if (this.getObjectOnTile(loc).isInactive() && this.getObjectOnTile(new Location(row+2,col)).isInactive()) {
+				this.getObjectOnTile(loc).setActive();
+				this.getObjectOnTile(new Location(row+2,col)).setActive();
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int getWidth(){
+		return this.width;
+	}
+
 
 	public Object getObjectOnTile(Location loc){
 		return this.boardArray[loc.getRow()][loc.getCol()];
