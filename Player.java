@@ -1,5 +1,6 @@
 public class Player {
 
+######
     /**
     * Id du joueur
     */
@@ -9,6 +10,7 @@ public class Player {
      */
     private static final int TOTAL_WALLS = 20;
 
+######
     /**
      * La position Location du joueur
      */
@@ -38,12 +40,12 @@ public class Player {
      * la position initiale à droites
      */
     private static final Location RIGHT = new Location(8, 16);//REMPLACER LES 0 ET LES 8 PAR DES VALEURS VARIABLES
-
+######
     /**
      * Nombre de joueurs
      */
     private int numPlayers;
-
+######
     /**
      * Tableau contenant toutes les les cases qu'un joueur peut atteindre à partir de la position où il se trouve
      */
