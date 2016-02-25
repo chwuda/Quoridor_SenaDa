@@ -27,7 +27,13 @@ class Board {
 	public Object getObjectOnTile(Location loc){
 		return this.boardArray[loc.getRow()][loc.getCol()];
 	}
-
+	
+	
+	/*Tu devez metre de commentaire car je ne comprends pas la fonction isHorizontal.. :P
+	Je pense qu'on peut directement demander à le jouer la row où il veut metre le mur, après on demande la col et après
+	la orientation (soit horizontal ou vertical) et après up/down, left/right. Après que le jouer choisis, on check si c'est possible
+	de mettre un mur sur ces 2 location, si c'est pas possible on retourne à l'etape d'avant et on affiche un message
+	*/
 	public boolean putWall(Location loc, boolean isHorizontal){
 		int row = col.getRow();
 		int col = col.getCol();
